@@ -1,5 +1,4 @@
 # trash code btw
-# discord.gg/accountgenerator to get free accounts!
 
 import nextcord, os, random, datetime, asyncio
 from nextcord.ext import commands
@@ -55,7 +54,7 @@ async def gen(inter, stock):
     Password = Pass.rstrip()
     
     embed = nextcord.Embed(title=server_name, color=nextcord.Color.yellow())
-    embed.set_footer(text=f"{server_name} | Join discord.gg/accountgenerator for more accounts!", icon_url=server_logo)
+    embed.set_footer(text=f"{server_name}", icon_url=server_logo)
     embed.set_thumbnail(url=server_logo)
     embed.add_field(name="Username:", value=f"```{str(User)}```")
     embed.add_field(name="Password:", value=f"```{str(Password)}```")
@@ -65,7 +64,7 @@ async def gen(inter, stock):
     name = (stock[0].upper() + stock[1:].lower()).replace(".txt", "")
     
     embed1 = nextcord.Embed(title=f"{name} Account Generated!", description="> Check your DMs for your account!", color=nextcord.Color.green())
-    embed1.set_footer(text=f"{server_name} | Join discord.gg/accountgenerator for more accounts!", icon_url=server_logo)
+    embed1.set_footer(text=f"{server_name}", icon_url=server_logo)
     embed1.set_thumbnail(url=server_logo)
     await inter.send(embed=embed1) 
     lines.remove(account)
@@ -96,7 +95,7 @@ async def freestock(inter: nextcord.Interaction):
 @bot.slash_command(name="help", description="Show all available commands!")
 async def help(ctx):
     embed = nextcord.Embed(title=server_name, color=nextcord.Color.red())
-    embed.set_footer(text=f"{server_name} | Join discord.gg/accountgenerator for more accounts!", icon_url=server_logo)
+    embed.set_footer(text=f"{server_name}", icon_url=server_logo)
     embed.set_thumbnail(url=server_logo)
     embed.add_field(name="/help", value="Shows this command", inline=False)
     embed.add_field(name="/gen", value="Generate free accounts", inline=False)
@@ -105,5 +104,3 @@ async def help(ctx):
     await ctx.send(embed=embed)
 
 bot.run("token here")
-
-# discord.gg/accountgenerator

@@ -3,8 +3,6 @@
     Simple bot that sends accounts to your DMs whenever you execute a command.
     <br />
     <br />
-    <a href="https://discord.gg/accountgenerator">⭐ Free Accounts</a>
-    ·
     <a href="https://replit.com/@ripzkoo/Discord-Account-Generator-Bot?v=1">🤖 Replit</a>
     ·
     <a href="https://youtu.be/0LAFmvXB3mE">🎥 YouTube Tutorial</a>

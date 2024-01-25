@@ -2,7 +2,7 @@
 import nextcord, os, random, datetime, asyncio
 from nextcord.ext import commands
 
-free_gen_channel = 5374638235 # Channel ID here
+generator_channel = 5374638235 # Channel ID here
 
 free_cooldowns = {}
 
@@ -11,13 +11,14 @@ bot = commands.Bot(intents=intents, help_command=None)
 
 server_name = "ENTER YOUR SERVER NAME HERE"
 server_logo = "ENTER YOUR SERVER'S LOGO LINK HERE"
+server_status = ".gg/staralts"
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=nextcord.Activity(type=nextcord.ActivityType.playing,name=server_name))
+    await bot.change_presence(activity=nextcord.Activity(type=nextcord.ActivityType.playing,name=server_status))
     print("Running")
 
-@bot.slash_command(name="gen", description="Generate free accounts!")
+@bot.slash_command(name="generate", description="Generate 100% working accounts!")
 async def gen(inter, stock):
     user = inter.user
     user_id = inter.user.id
@@ -28,21 +29,21 @@ async def gen(inter, stock):
                                color=nextcord.Color.red())
         await inter.send(embed=embed, ephemeral=True)
         return
-    if inter.channel.id != free_gen_channel:
-        embed = nextcord.Embed(title=f"Wrong Channel! Use <#{free_gen_channel}>", color=nextcord.Color.red())
+    if inter.channel.id != generator_channel:
+        embed = nextcord.Embed(title=f"Wrong Channel! Use <#{generator_channel}>", color=nextcord.Color.red())
         await inter.send(embed=embed, ephemeral=True)
         return
     
     stock = stock.lower() + ".txt"
-    if stock not in os.listdir("freestock//"):
+    if stock not in os.listdir("stock//"):
         embed = nextcord.Embed(title="The stock that you are trying to generate does not exist.", color=nextcord.Color.red())
         await inter.send(embed=embed, ephemeral=True)
         return
     
-    with open(f"freestock//{stock}") as file:
+    with open(f"stock//{stock}") as file:
         lines = file.read().splitlines()
         if len(lines) == 0:
-            embed = nextcord.Embed(title="Out of stock!", description="Please wait until we restock!", color=nextcord.Color.red())
+            embed = nextcord.Embed(title="Out of stock!", description="This service is currently out of stock. Please wait.", color=nextcord.Color.red())
             await inter.send(embed=embed, ephemeral=True)
             return
     
@@ -62,7 +63,7 @@ async def gen(inter, stock):
     
     name = (stock[0].upper() + stock[1:].lower()).replace(".txt", "")
     
-    embed1 = nextcord.Embed(title=f"{name} Account Generated!", description="> Check your DMs for your account!", color=nextcord.Color.green())
+    embed1 = nextcord.Embed(title=f"{name} Account Generated!", description="> Your {name} account has been sent to your DMs.", color=nextcord.Color.green())
     embed1.set_footer(text=f"{server_name}", icon_url=server_logo)
     embed1.set_thumbnail(url=server_logo)
     await inter.send(embed=embed1) 
@@ -91,4 +92,4 @@ async def freestock(inter: nextcord.Interaction):
             embed.description += f"* **{name}**: `{amount}`\n"
     await inter.send(embed=embed, ephemeral=True)
 
-bot.run("token here")
+bot.run("Your Token Here")

@@ -6,7 +6,7 @@ from nextcord.ext import commands
 
 generator_channel = 5374638235 # Channel ID here
 
-free_cooldowns = {}
+disneyplus_cooldowns = {}
 
 intents = nextcord.Intents.all()
 bot = commands.Bot(intents=intents, help_command=None)
@@ -26,8 +26,8 @@ async def on_ready():
 async def gen_disneyplus(inter):
 user = inter.user
 user_id = inter.user.id
-if user_id in free_cooldowns:
-    remaining_cooldown = free_cooldowns[user_id]
+if user_id in disneyplus_cooldowns:
+    remaining_cooldown = disneyplus_cooldowns[user_id]
     embed = nextcord.Embed(title="Cooldown", description=f"You still have {remaining_cooldown} seconds remaining.",
                            color=nextcord.Color.red())
     await inter.send(embed=embed, ephemeral=True)
@@ -68,13 +68,13 @@ lines.remove(account)
 with open(f"stock//{stock}", "w", encoding='utf-8') as file:
     file.write("\n".join(lines))
 
-free_cooldowns[user_id] = 30
+disneyplus_cooldowns[user_id] = 30
 await asyncio.sleep(1)
-while free_cooldowns[user_id] > 0:
-    free_cooldowns[user_id] -= 1
+while disneyplus_cooldowns[user_id] > 0:
+    disneyplus_cooldowns[user_id] -= 1
     await asyncio.sleep(1)
 
-del free_cooldowns[user_id]
+del disneyplus_cooldowns[user_id]
 
 @bot.slash_command(name="stock", description="View free stock!")
 async def freestock(inter: nextcord.Interaction):   

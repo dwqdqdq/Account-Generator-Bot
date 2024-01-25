@@ -2,6 +2,7 @@
 # Add It So It Deletes the Line After the Generation
 # Made by Star Alts | Revamped Code of HellGen 
 # DisneyPlus Command Will have a 2 hour cooldown for free users, 15 minutes for premium and 10 minutes for extreme soon
+# Join Our Discord Server for 100% Working Alts
 
 import nextcord, os, random, datetime, asyncio
 from nextcord.ext import commands
@@ -18,11 +19,11 @@ bot = commands.Bot(intents=intents, help_command=None)
 
 server_name = "Star Alts"
 server_logo = "https://staralts.xyz"
-server_status = ".gg/staralts"
+bot_status = ".gg/staralts"
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=nextcord.Activity(type=nextcord.ActivityType.playing,name=server_status))
+    await bot.change_presence(activity=nextcord.Activity(type=nextcord.ActivityType.playing,name=bot_status))
     print("Running")
 
 # Disney Plus Command
@@ -88,7 +89,7 @@ async def gen_netflix(inter):
 user = inter.user
 user_id = inter.user.id
 if role_premium_id not in [role.id for role in user.roles] and role_extreme_id not in [role.id for role in user.roles]:
-    embed = nextcord.Embed(title="Access Denied", description="You need <@&{role_extreme_id}> or <@&{role_premium_id}> to use this command.", color=nextcord.Color.red())
+    embed = nextcord.Embed(title="Purchase to Access this Command", description="You need <@&{role_extreme_id}> or <@&{role_premium_id}> to use this command.", color=nextcord.Color.red())
     await inter.send(embed=embed, ephemeral=True)
     return
 
@@ -148,6 +149,6 @@ while netflix_cooldowns[user_id] > 0:
 del netflix_cooldowns[user_id]
 
 # Input Your Bot Token Here 
-# Running On Replit Is Not Recommended As You May Get Raided
+# Running On Replit Is Not Recommended As You May Get Raided or Nuked
 
 bot.run("Your Token Here")

@@ -32,12 +32,20 @@ async def on_ready():
 async def gen_disneyplus(inter):
 user = inter.user
 user_id = inter.user.id
+if role_premium_id in [role.id for role in user.roles]:
+    cooldown = 600
+elif role_extreme_id in [role.id for role in user.roles]:
+    cooldown = 300 
+else:
+    cooldown = 3600
+
 if user_id in disneyplus_cooldowns:
     remaining_cooldown = disneyplus_cooldowns[user_id]
     embed = nextcord.Embed(title="Cooldown", description=f"You still have {remaining_cooldown} seconds remaining.",
                            color=nextcord.Color.red())
     await inter.send(embed=embed, ephemeral=True)
     return
+
 if inter.channel.id != generator_channel:
     embed = nextcord.Embed(title=f"Wrong Channel! Use <#{generator_channel}>", color=nextcord.Color.red())
     await inter.send(embed=embed, ephemeral=True)
@@ -62,7 +70,7 @@ User = combo[0]
 Pass = combo[1]
 Password = Pass.rstrip()
 
-embed1 = nextcord.Embed(title="✅ Disney Plus Account Generated!", description="> These accounts are 99% working as they are all checked before adding it to the generator. If they do not work, open a ticket.", color=nextcord.Color.green())
+embed = nextcord.Embed(title="Generated Disney Plus Account", color=nextcord.Color.yellow())
 embed.add_field(name="Username:", value=f"```{str(User)}```")
 embed.add_field(name="Password:", value=f"```{str(Password)}```")
 embed.add_field(name="Combo:", value=f"```{str(User)}:{str(Password)}```", inline=False) 
@@ -74,7 +82,7 @@ lines.remove(account)
 with open(f"stock//{stock}", "w", encoding='utf-8') as file:
     file.write("\n".join(lines))
 
-disneyplus_cooldowns[user_id] = 30
+disneyplus_cooldowns[user_id] = cooldown
 await asyncio.sleep(1)
 while disneyplus_cooldowns[user_id] > 0:
     disneyplus_cooldowns[user_id] -= 1

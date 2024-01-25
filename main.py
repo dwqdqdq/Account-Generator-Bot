@@ -1,5 +1,4 @@
-# trash code btw
-
+# Commands will be like /generate-disneyplus, free 100% working and netflix for premium users & extreme
 import nextcord, os, random, datetime, asyncio
 from nextcord.ext import commands
 
@@ -91,16 +90,5 @@ async def freestock(inter: nextcord.Interaction):
             name = (filename[0].upper() + filename[1:].lower()).replace(".txt","") 
             embed.description += f"* **{name}**: `{amount}`\n"
     await inter.send(embed=embed, ephemeral=True)
-
-@bot.slash_command(name="help", description="Show all available commands!")
-async def help(ctx):
-    embed = nextcord.Embed(title=server_name, color=nextcord.Color.red())
-    embed.set_footer(text=f"{server_name}", icon_url=server_logo)
-    embed.set_thumbnail(url=server_logo)
-    embed.add_field(name="/help", value="Shows this command", inline=False)
-    embed.add_field(name="/gen", value="Generate free accounts", inline=False)
-    embed.add_field(name="/stock", value="View free stock", inline=False)
-  
-    await ctx.send(embed=embed)
 
 bot.run("token here")

@@ -1,4 +1,6 @@
 # Commands will be like /generate-disneyplus, free 100% working and netflix for premium users & extreme
+# Add It So It Deletes the Line After the Generation
+
 import nextcord, os, random, datetime, asyncio
 from nextcord.ext import commands
 

@@ -20,66 +20,61 @@ async def on_ready():
     await bot.change_presence(activity=nextcord.Activity(type=nextcord.ActivityType.playing,name=server_status))
     print("Running")
 
-@bot.slash_command(name="generate", description="Generate 100% working accounts!")
-async def gen(inter, stock):
-    user = inter.user
-    user_id = inter.user.id
+# Disney Plus Command
 
-    if user_id in free_cooldowns:
-        remaining_cooldown = free_cooldowns[user_id]
-        embed = nextcord.Embed(title="Cooldown", description=f"You still have {remaining_cooldown} seconds remaining.",
-                               color=nextcord.Color.red())
-        await inter.send(embed=embed, ephemeral=True)
-        return
-    if inter.channel.id != generator_channel:
-        embed = nextcord.Embed(title=f"Wrong Channel! Use <#{generator_channel}>", color=nextcord.Color.red())
-        await inter.send(embed=embed, ephemeral=True)
-        return
-    
-    stock = stock.lower() + ".txt"
-    if stock not in os.listdir("stock//"):
-        embed = nextcord.Embed(title="The stock that you are trying to generate does not exist.", color=nextcord.Color.red())
-        await inter.send(embed=embed, ephemeral=True)
-        return
-    
-    with open(f"stock//{stock}") as file:
-        lines = file.read().splitlines()
-        if len(lines) == 0:
-            embed = nextcord.Embed(title="Out of stock!", description="This service is currently out of stock. Please wait.", color=nextcord.Color.red())
-            await inter.send(embed=embed, ephemeral=True)
-            return
-    
-    account = random.choice(lines)
-    combo = account.split(':')
-    User = combo[0]
-    Pass = combo[1]
-    Password = Pass.rstrip()
-    
-    embed = nextcord.Embed(title=server_name, color=nextcord.Color.yellow())
-    embed.set_footer(text=f"{server_name}", icon_url=server_logo)
-    embed.set_thumbnail(url=server_logo)
-    embed.add_field(name="Username:", value=f"```{str(User)}```")
-    embed.add_field(name="Password:", value=f"```{str(Password)}```")
-    embed.add_field(name="Combo:", value=f"```{str(User)}:{str(Password)}```", inline=False) 
-    await user.send(embed=embed)
-    
-    name = (stock[0].upper() + stock[1:].lower()).replace(".txt", "")
-    
-    embed1 = nextcord.Embed(title=f"{name} Account Generated!", description="> Your {name} account has been sent to your DMs.", color=nextcord.Color.green())
-    embed1.set_footer(text=f"{server_name}", icon_url=server_logo)
-    embed1.set_thumbnail(url=server_logo)
-    await inter.send(embed=embed1) 
-    lines.remove(account)
-    with open(f"freestock//{stock}", "w", encoding='utf-8') as file:
-        file.write("\n".join(lines))
+@bot.slash_command(name="generate-disneyplus", description="Generate a 100% working Disney Plus account!")
+async def gen_disneyplus(inter):
+user = inter.user
+user_id = inter.user.id
+if user_id in free_cooldowns:
+    remaining_cooldown = free_cooldowns[user_id]
+    embed = nextcord.Embed(title="Cooldown", description=f"You still have {remaining_cooldown} seconds remaining.",
+                           color=nextcord.Color.red())
+    await inter.send(embed=embed, ephemeral=True)
+    return
+if inter.channel.id != generator_channel:
+    embed = nextcord.Embed(title=f"Wrong Channel! Use <#{generator_channel}>", color=nextcord.Color.red())
+    await inter.send(embed=embed, ephemeral=True)
+    return
 
-    free_cooldowns[user_id] = 30
+stock = "disneyplus.txt"
+if stock not in os.listdir("stock//"):
+    embed = nextcord.Embed(title="The Disney Plus stock does not exist.", color=nextcord.Color.red())
+    await inter.send(embed=embed, ephemeral=True)
+    return
+
+with open(f"stock//{stock}") as file:
+    lines = file.read().splitlines()
+    if len(lines) == 0:
+        embed = nextcord.Embed(title="Out of stock!", description="This service is currently out of stock. Please wait.", color=nextcord.Color.red())
+        await inter.send(embed=embed, ephemeral=True)
+        return
+
+account = random.choice(lines)
+combo = account.split(':')
+User = combo[0]
+Pass = combo[1]
+Password = Pass.rstrip()
+
+embed = nextcord.Embed(title="Generated Disney Plus Account", color=nextcord.Color.yellow())
+embed.add_field(name="Username:", value=f"```{str(User)}```")
+embed.add_field(name="Password:", value=f"```{str(Password)}```")
+embed.add_field(name="Combo:", value=f"```{str(User)}:{str(Password)}```", inline=False) 
+await user.send(embed=embed)
+
+embed1 = nextcord.Embed(title="✅ Disney Plus Account Generated!", description="> Your 100% working account has been sent to your DMs.", color=nextcord.Color.green())
+await inter.send(embed=embed1) 
+lines.remove(account)
+with open(f"stock//{stock}", "w", encoding='utf-8') as file:
+    file.write("\n".join(lines))
+
+free_cooldowns[user_id] = 30
+await asyncio.sleep(1)
+while free_cooldowns[user_id] > 0:
+    free_cooldowns[user_id] -= 1
     await asyncio.sleep(1)
-    while free_cooldowns[user_id] > 0:
-        free_cooldowns[user_id] -= 1
-        await asyncio.sleep(1)
 
-    del free_cooldowns[user_id]
+del free_cooldowns[user_id]
 
 @bot.slash_command(name="stock", description="View free stock!")
 async def freestock(inter: nextcord.Interaction):   

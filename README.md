@@ -14,6 +14,9 @@
 3. Go to cogs and fgen.py, go to line 54 and add your channel id.
 4. Restock the bot and run it.
 
+# 📚 Need accounts to restock?
+- Join https://discord.gg/generating, the best account generator on Discord with tons of accounts.
+
 # ⭐ Features
 
 - Simple configuration

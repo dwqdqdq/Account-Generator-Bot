@@ -95,7 +95,7 @@ class fgen(commands.Cog):
                 username = combo[0]
                 password = combo[1]
 
-                embed = nextcord.Embed(title=f"🎉 {name} Account:", description="> If the account does not, try another one.", color=nextcord.Colour.green())
+                embed = nextcord.Embed(title=f"🎉 {name} Account:", description="> If the account does not work, try another one.", color=nextcord.Colour.green())
                 embed.add_field(name="Username:", value=f"```{username}```", inline=True)
                 embed.add_field(name="Password:", value=f"```{password}```", inline=True)
                 embed.add_field(name="Combo:", value=f"```{account}```", inline=False)
@@ -125,7 +125,7 @@ class fgen(commands.Cog):
                 embed.set_footer(text="Use the bot in your server: https://github.com/zkoolol/Account-Generator-Bot", icon_url="https://cdn.discordapp.com/attachments/1204244617869000788/1204249308237402162/icon.png?ex=65d40b90&is=65c19690&hm=42115bccb811f86d7a9cdbcb686a2f1c2a5be6633e04f712da3765d6da475e03&")
                 await msg.edit(embed=embed)
 
-            embed = nextcord.Embed(title=f"🎉 {name} Account:", description="> If the account does not, try another one.", color=nextcord.Colour.green())
+            embed = nextcord.Embed(title=f"🎉 {name} Account:", description="> If the account does not work, try another one.", color=nextcord.Colour.green())
             embed.add_field(name="Username:", value=f"```{username}```", inline=True)
             embed.add_field(name="Password:", value=f"```{password}```", inline=True)
             embed.add_field(name="Combo:", value=f"```{account}```", inline=False)

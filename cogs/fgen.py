@@ -77,7 +77,7 @@ class fgen(commands.Cog):
         self.save_cooldowns()
         
         embed = nextcord.Embed(title="⏰ Please wait..", description="> I am getting the account ready for you, please wait a few seconds..\n\nIf this takes more than 15 seconds, please contact the staff team to check bot's console.", color=nextcord.Colour.yellow())
-        embed.set_footer(text="Use the bot in your server: https://github.com/zkoolol/Account-Generator-Bot", icon_url="https://cdn.discordapp.com/attachments/1204244617869000788/1204249308237402162/icon.png?ex=65d40b90&is=65c19690&hm=42115bccb811f86d7a9cdbcb686a2f1c2a5be6633e04f712da3765d6da475e03&")
+        embed.set_footer(text="Use the bot in your server: https://github.com/hqwi/Account-Generator-Bot", icon_url="https://cdn.discordapp.com/attachments/1204244617869000788/1204249308237402162/icon.png?ex=65d40b90&is=65c19690&hm=42115bccb811f86d7a9cdbcb686a2f1c2a5be6633e04f712da3765d6da475e03&")
         msg = await ctx.send(embed=embed)
         print(Fore.GREEN + f"<+> Getting a {stock} account ready for user {user}...")
 
@@ -99,7 +99,7 @@ class fgen(commands.Cog):
                 embed.add_field(name="Username:", value=f"```{username}```", inline=True)
                 embed.add_field(name="Password:", value=f"```{password}```", inline=True)
                 embed.add_field(name="Combo:", value=f"```{account}```", inline=False)
-                embed.set_footer(text="Use the bot in your server: https://github.com/zkoolol/Account-Generator-Bot", icon_url="https://cdn.discordapp.com/attachments/1204244617869000788/1204249308237402162/icon.png?ex=65d40b90&is=65c19690&hm=42115bccb811f86d7a9cdbcb686a2f1c2a5be6633e04f712da3765d6da475e03&")
+                embed.set_footer(text="Use the bot in your server: https://github.com/hqwi/Account-Generator-Bot", icon_url="https://cdn.discordapp.com/attachments/1204244617869000788/1204249308237402162/icon.png?ex=65d40b90&is=65c19690&hm=42115bccb811f86d7a9cdbcb686a2f1c2a5be6633e04f712da3765d6da475e03&")
                 embed.timestamp = datetime.now()
                 
                 try:
@@ -117,12 +117,12 @@ class fgen(commands.Cog):
 
                 embed = nextcord.Embed(title=f"🎉 Successfully generated a {name} account!", description=f"> Check your [DMs]({dmlink}) or the message below for your account.\n\n**Report any issues to the staff team!**", color=nextcord.Colour.green())
                 embed.timestamp = datetime.now()
-                embed.set_footer(text="Use the bot in your server: https://github.com/zkoolol/Account-Generator-Bot", icon_url="https://cdn.discordapp.com/attachments/1204244617869000788/1204249308237402162/icon.png?ex=65d40b90&is=65c19690&hm=42115bccb811f86d7a9cdbcb686a2f1c2a5be6633e04f712da3765d6da475e03&")
+                embed.set_footer(text="Use the bot in your server: https://github.com/hqwi/Account-Generator-Bot", icon_url="https://cdn.discordapp.com/attachments/1204244617869000788/1204249308237402162/icon.png?ex=65d40b90&is=65c19690&hm=42115bccb811f86d7a9cdbcb686a2f1c2a5be6633e04f712da3765d6da475e03&")
                 await msg.edit(embed=embed)
             except:
                 embed = nextcord.Embed(title=f"🎉 Successfully generated a {name} account!", description=f"> Check the message below for your account.\n\n**Report any issues to the staff team!**", color=nextcord.Colour.green())
                 embed.timestamp = datetime.now()
-                embed.set_footer(text="Use the bot in your server: https://github.com/zkoolol/Account-Generator-Bot", icon_url="https://cdn.discordapp.com/attachments/1204244617869000788/1204249308237402162/icon.png?ex=65d40b90&is=65c19690&hm=42115bccb811f86d7a9cdbcb686a2f1c2a5be6633e04f712da3765d6da475e03&")
+                embed.set_footer(text="Use the bot in your server: https://github.com/hqwi/Account-Generator-Bot", icon_url="https://cdn.discordapp.com/attachments/1204244617869000788/1204249308237402162/icon.png?ex=65d40b90&is=65c19690&hm=42115bccb811f86d7a9cdbcb686a2f1c2a5be6633e04f712da3765d6da475e03&")
                 await msg.edit(embed=embed)
 
             embed = nextcord.Embed(title=f"🎉 {name} Account:", description="> If the account does not work, try another one.", color=nextcord.Colour.green())
@@ -130,7 +130,7 @@ class fgen(commands.Cog):
             embed.add_field(name="Password:", value=f"```{password}```", inline=True)
             embed.add_field(name="Combo:", value=f"```{account}```", inline=False)
             embed.timestamp = datetime.now()
-            embed.set_footer(text="Use the bot in your server: https://github.com/zkoolol/Account-Generator-Bot", icon_url="https://cdn.discordapp.com/attachments/1204244617869000788/1204249308237402162/icon.png?ex=65d40b90&is=65c19690&hm=42115bccb811f86d7a9cdbcb686a2f1c2a5be6633e04f712da3765d6da475e03&")
+            embed.set_footer(text="Use the bot in your server: https://github.com/hqwi/Account-Generator-Bot", icon_url="https://cdn.discordapp.com/attachments/1204244617869000788/1204249308237402162/icon.png?ex=65d40b90&is=65c19690&hm=42115bccb811f86d7a9cdbcb686a2f1c2a5be6633e04f712da3765d6da475e03&")
             await ctx.send(f"{username}:{password}", embed=embed, ephemeral=True)
 
 def setup(bot):

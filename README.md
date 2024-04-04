@@ -15,7 +15,7 @@
 4. Restock the bot and run it.
 
 # 📚 Need accounts to restock?
-- Join https://discord.gg/generating, the best account generator on Discord with tons of accounts.
+- Join https://discord.gg/gen, the best account generator on Discord with tons of accounts.
 
 # ⭐ Features
 

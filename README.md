@@ -24,7 +24,4 @@
 - Custom cooldown system
 - Slash commands
 
-# 🎗️Tutorial (outdated, working on a new one)
-- https://youtu.be/0LAFmvXB3mE
-
-Dont expect regular updates, I made it in about an hour for fun. It is simply an example on the generation system, you can always remake it if you want.
+# Dont expect regular updates, I made it in about an hour for fun. It is simply an example on the generation system, you can always remake it if you want.
